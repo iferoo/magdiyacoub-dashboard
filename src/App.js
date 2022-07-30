@@ -1,24 +1,96 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import PatientsPage from './components/patients/Patients.Page';
+import ViewPatient from './components/patients/Patients.View';
+import AddPatient from './components/patients/Patients.Form';
+
+import StaffPage from './components/staff/StaffPage';
+import ViewStaff from './components/staff/ViewStaff';
+import UpdateStaff from './components/staff/UpdateStaff';
+import AddStaff from './components/staff/AddStaff';
+
+import RoomsPage from './components/rooms/Rooms.Page';
+import ViewRooms from './components/rooms/Rooms.View';
+import UpdateRooms from './components/rooms/Rooms.Update';
+import AddRooms from './components/rooms/Rooms.Add';
+
+import LogIn from './components/sign/Sign.LogIn';
+import SignUp from './components/sign/Sign.SignUp';
+import ForgetPassword from './components/sign/Sign.ForgetPassword';
+import SignPage from './pages/SignPages';
+
+import AppPages from './pages/AppPages';
+
+import NotFoundPage from './pages/NotFoundPage';
+import Analytics from './components/analytics/Analytics.Page';
+import TodayAnalytics from './components/analytics/Analytics.Today';
+import WeekAnalytics from './components/analytics/Analytics.Week';
+import MonthAnalytics from './components/analytics/Analytics.Month';
+import YearAnalytics from './components/analytics/Analytics.Year';
+
+import { ThemeProvider } from 'styled-components';
+import GlobalStyles from './styles/Global';
+
+const theme = {
+  colors: {
+    primary: '#ffffff',
+    secondary: '#f52225',
+    third: '#0197f6',
+    fourth: '#e3c98d',
+    fifth: '#448fa3',
+  },
+  fontsColors: {
+    primary: '#000000',
+    secondary: '#3C4047',
+    third: '#8D8B84',
+  },
+  mobile: '768px',
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyles />
+        <Routes>
+          <Route path="/" element={<AppPages />}>
+            <Route index element={<Navigate to="patients" replace />} />
+            <Route path="patients" element={<PatientsPage />}>
+              <Route index element={<ViewPatient />} />
+              <Route path="add" element={<AddPatient />} />
+            </Route>
+            <Route path="rooms" element={<RoomsPage />}>
+              <Route index element={<ViewRooms />} />
+              <Route path="Update" element={<UpdateRooms />} />
+              <Route path="add" element={<AddRooms />} />
+            </Route>
+            <Route path="staff" element={<StaffPage />}>
+              <Route index element={<ViewStaff />} />
+              <Route path="Update" element={<UpdateStaff />} />
+              <Route path="add" element={<AddStaff />} />
+            </Route>
+            <Route path="analytics" element={<Analytics />}>
+              <Route index element={<Navigate to="today" replace />} />
+              <Route path="today" element={<TodayAnalytics />} />
+              <Route path="week" element={<WeekAnalytics />} />
+              <Route path="month" element={<MonthAnalytics />} />
+              <Route path="year" element={<YearAnalytics />} />
+            </Route>
+          </Route>
+          <Route path="/" element={<SignPage />}>
+            <Route path="login" element={<LogIn />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="forgetpassword" element={<ForgetPassword />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        <ToastContainer />
+      </>
+    </ThemeProvider>
   );
 }
 
