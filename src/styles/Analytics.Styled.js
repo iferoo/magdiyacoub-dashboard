@@ -1,38 +1,4 @@
 import styled from 'styled-components';
-import { PageSection as Section } from './styles';
-
-export const PageSection = styled(Section)`
-  .container {
-    .date {
-      padding: 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      .today,
-      .week,
-      .month,
-      .year {
-        border: 1px solid ${({ theme }) => theme.fontsColors.secondary};
-        border-radius: 3rem;
-        padding: 0.5rem 2rem;
-      }
-      a {
-        text-decoration: none;
-        color: ${({ theme }) => theme.fontsColors.secondary};
-        &:hover {
-          color: ${({ theme }) => theme.fontsColors.primary};
-        }
-      }
-      .active {
-        color: ${({ theme }) => theme.colors.primary};
-        background-color: ${({ theme }) => theme.colors.secondary};
-        &:hover {
-          color: ${({ theme }) => theme.colors.primary};
-        }
-      }
-    }
-  }
-`;
 
 export const AnalyticsSection = styled.section`
   padding: 1rem 2rem;

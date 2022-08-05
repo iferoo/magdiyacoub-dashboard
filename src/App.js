@@ -8,15 +8,13 @@ import PatientsPage from './components/patients/Patients.Page';
 import ViewPatient from './components/patients/Patients.View';
 import AddPatient from './components/patients/Patients.Form';
 
-import StaffPage from './components/staff/StaffPage';
-import ViewStaff from './components/staff/ViewStaff';
-import UpdateStaff from './components/staff/UpdateStaff';
-import AddStaff from './components/staff/AddStaff';
+import StaffPage from './components/staff/Staff.Page';
+import ViewStaff from './components/staff/Staff.View';
+import UpdateStaff from './components/staff/Staff.Update';
+import AddStaff from './components/staff/Staff.Add';
 
 import RoomsPage from './components/rooms/Rooms.Page';
 import ViewRooms from './components/rooms/Rooms.View';
-import UpdateRooms from './components/rooms/Rooms.Update';
-import AddRooms from './components/rooms/Rooms.Add';
 
 import LogIn from './components/sign/Sign.LogIn';
 import SignUp from './components/sign/Sign.SignUp';
@@ -65,8 +63,6 @@ function App() {
             </Route>
             <Route path="rooms" element={<RoomsPage />}>
               <Route index element={<ViewRooms />} />
-              <Route path="Update" element={<UpdateRooms />} />
-              <Route path="add" element={<AddRooms />} />
             </Route>
             <Route path="staff" element={<StaffPage />}>
               <Route index element={<ViewStaff />} />

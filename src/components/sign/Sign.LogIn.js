@@ -2,11 +2,13 @@ import { React, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
 
 export default function LogIn() {
+  const navigate = useNavigate();
+
   const [usernameError, setUsernameError] = useState(false);
 
   const hasEmailError = () => {
@@ -60,12 +62,17 @@ export default function LogIn() {
         {...register('user.password', {})}
       />
 
-      <input type="submit" className="submit" value="login" />
+      <input
+        type="submit"
+        className="submit"
+        value="login"
+        onClick={() => {
+          navigate('/');
+        }}
+      />
 
       <div className="links">
-        <LoginNotification
-          style={{ display: `block` }}
-        >
+        <LoginNotification style={{ display: `block` }}>
           Your username and/or password are incorrect
         </LoginNotification>
         <div className="or">

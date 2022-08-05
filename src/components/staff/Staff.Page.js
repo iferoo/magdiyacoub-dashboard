@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
+
 import { PageSection } from '../../styles/Global';
 
-export default function AnalyticsPage() {
+export default function StaffPage() {
   const { pathname } = useLocation();
-
   const [activeLink, setActiveLink] = useState(1);
 
   useEffect(() => {
     const handleActiveLink = () => {
-      pathname === '/analytics/today'
-        ? setActiveLink(1)
-        : pathname === '/analytics/week'
+      pathname === '/staff/update'
         ? setActiveLink(2)
-        : pathname === '/analytics/month'
+        : pathname === '/staff/add'
         ? setActiveLink(3)
-        : setActiveLink(4);
+        : setActiveLink(1);
     };
 
     handleActiveLink();
@@ -25,35 +23,28 @@ export default function AnalyticsPage() {
     <PageSection>
       <div className="container">
         <div className="top">
-          <h2>Analytics</h2>
-          <div className="date">
+          <h2>Staff</h2>
+          <div>
             <Link
-              to="today"
-              className={`today ${activeLink === 1 && 'active'}`}
+              to=""
+              className={`${activeLink === 1 && 'active'}`}
               onClick={() => setActiveLink(1)}
             >
-              Today
+              View
             </Link>
             <Link
-              to="week"
-              className={`week ${activeLink === 2 && 'active'}`}
+              to="update"
+              className={`${activeLink === 2 && 'active'}`}
               onClick={() => setActiveLink(2)}
             >
-              This week
+              Update
             </Link>
             <Link
-              to="month"
-              className={`month ${activeLink === 3 && 'active'}`}
+              to="add"
+              className={`${activeLink === 3 && 'active'}`}
               onClick={() => setActiveLink(3)}
             >
-              This month
-            </Link>
-            <Link
-              to="year"
-              className={`year ${activeLink === 4 && 'active'}`}
-              onClick={() => setActiveLink(4)}
-            >
-              This year
+              Add
             </Link>
           </div>
         </div>

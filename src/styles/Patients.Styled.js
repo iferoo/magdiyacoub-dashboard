@@ -173,30 +173,31 @@ export const ViewPatientSection = styled.section`
   .left {
     width: 30%;
     .search {
-      display: flex;
+      /* display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
+      align-items: flex-start; */
+      /* gap: 0.5rem; */
       .search-input {
         width: 100%;
-        background-color: #b9b9b9;
+        background-color: ${({ theme }) => theme.colors.fourth};
         border-radius: 1rem;
         padding: 0.5rem;
         display: flex;
         align-items: center;
+        color: ${({ theme }) => theme.colors.primary};
 
         svg {
           width: 20%;
           font-size: 1.5rem;
-          color: #888888;
+          color: ${({ theme }) => theme.colors.primary};
         }
         input {
           width: 80%;
           background-color: transparent;
           border: none;
-          color: var(--white);
+          color: ${({ theme }) => theme.colors.primary};
           &::placeholder {
-            color: var(--white);
+            color: ${({ theme }) => theme.colors.primary};
           }
           &:focus {
             outline: none;
@@ -220,7 +221,7 @@ export const ViewPatientSection = styled.section`
           margin: 0.4rem;
           width: 10px;
           height: 10px;
-          background-color: blue;
+          background-color: ${({ theme }) => theme.colors.third};
           border-radius: 50%;
         }
         .nonActive {

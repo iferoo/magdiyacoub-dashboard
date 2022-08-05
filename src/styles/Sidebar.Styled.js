@@ -24,13 +24,13 @@ export const SideBar = styled.section`
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: 1px 1px 5px #888888;
+        /* box-shadow: 1px 1px 5px #888888; */
         padding: 0.2rem 1rem;
         border-radius: 1rem;
         background-color: #fff;
 
         span img {
-          width: 80px;
+          width: 100px;
         }
       }
     }
@@ -48,7 +48,7 @@ export const SideBar = styled.section`
       align-items: center;
       margin: 2rem 0;
       a {
-        width: 50%;
+        width: 90%;
         padding: 1rem 1rem;
         text-decoration: none;
         display: flex;
