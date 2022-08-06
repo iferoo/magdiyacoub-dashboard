@@ -4,6 +4,9 @@ import auth from './authSlice';
 import report from './reportSlice';
 import rooms from './roomSlice';
 import patients from './patientSlice';
+import doctors from './doctorSlice';
+import nurses from './nurseSlice';
+import beds from './bedSlice';
 
 const store = configureStore({
   reducer: {
@@ -12,6 +15,9 @@ const store = configureStore({
     report,
     rooms,
     patients,
+    doctors,
+    nurses,
+    beds,
   },
 });
 

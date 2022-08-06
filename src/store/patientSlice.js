@@ -15,6 +15,29 @@ export const getPatients = createAsyncThunk(
   }
 );
 
+export const addPatients = createAsyncThunk(
+  'patient/addPatients',
+  async (patient, thunkAPI) => {
+    console.log(patient);
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await fetch(patientsUrl, {
+        method: 'POST',
+        body: JSON.stringify(patient),
+        headers: {
+          'Content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
+        },
+      });
+      //report
+      const data = await res.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const patientSlice = createSlice({
   name: 'patient',
   initialState: { patients: [], isLoading: false, error: null },

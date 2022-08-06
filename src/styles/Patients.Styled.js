@@ -19,16 +19,29 @@ export const AddPatientSection = styled.section`
     &:focus {
     }
   }
+
   .patientProfile {
     padding: 1rem 3rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    img {
-      padding: 1rem;
-      width: 30%;
-      border-radius: 50%;
+
+    .patientImage {
+      width: 40%;
+      position: relative;
+      img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+      }
+      input {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+      }
     }
+
     .profile {
       width: 60%;
       display: flex;
@@ -144,6 +157,11 @@ export const AddPatientSection = styled.section`
       }
       .profile {
         width: 100%;
+      }
+      .patientImage {
+        width: 100%;
+        display: flex;
+        justify-content: center;
       }
     }
     .patientInfo {

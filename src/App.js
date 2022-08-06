@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import PatientsPage from './components/patients/Patients.Page';
 import ViewPatient from './components/patients/Patients.View';
-import AddPatient from './components/patients/Patients.Form';
 
 import StaffPage from './components/staff/Staff.Page';
 import ViewStaff from './components/staff/Staff.View';
@@ -32,6 +31,7 @@ import YearAnalytics from './components/analytics/Analytics.Year';
 
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/Global';
+import PatientsAdd from './components/patients/Patients.Add';
 
 const theme = {
   colors: {
@@ -56,20 +56,22 @@ function App() {
         <GlobalStyles />
         <Routes>
           <Route path="/" element={<AppPages />}>
-            <Route index element={<Navigate to="patients" replace />} />
+            <Route index element={<Navigate to="/patients" replace />} />
             <Route path="patients" element={<PatientsPage />}>
-              <Route index element={<ViewPatient />} />
-              <Route path="add" element={<AddPatient />} />
+              <Route index element={<Navigate to="view" replace />} />
+              <Route path="view" element={<ViewPatient />} />
+              <Route path="add" element={<PatientsAdd />} />
             </Route>
-            <Route path="rooms" element={<RoomsPage />}>
+            <Route path="/rooms" element={<RoomsPage />}>
               <Route index element={<ViewRooms />} />
             </Route>
-            <Route path="staff" element={<StaffPage />}>
-              <Route index element={<ViewStaff />} />
+            <Route path="/staff" element={<StaffPage />}>
+              <Route index element={<Navigate to="view" replace />} />
+              <Route path="view" element={<ViewStaff />} />
               <Route path="Update" element={<UpdateStaff />} />
               <Route path="add" element={<AddStaff />} />
             </Route>
-            <Route path="analytics" element={<Analytics />}>
+            <Route path="/analytics" element={<Analytics />}>
               <Route index element={<Navigate to="today" replace />} />
               <Route path="today" element={<TodayAnalytics />} />
               <Route path="week" element={<WeekAnalytics />} />

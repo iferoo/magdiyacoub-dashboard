@@ -1,26 +1,23 @@
-import React, { useState } from "react";
-import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 
-import { ImProfile } from "react-icons/im";
-import { FaBed } from "react-icons/fa";
-import { MdEngineering } from "react-icons/md";
-import { BsFillChatTextFill } from "react-icons/bs";
-import { BiLogOut } from "react-icons/bi";
-import { VscChromeClose } from "react-icons/vsc";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { ImProfile } from 'react-icons/im';
+import { FaBed } from 'react-icons/fa';
+import { MdEngineering } from 'react-icons/md';
+import { BsFillChatTextFill } from 'react-icons/bs';
+import { BiLogOut } from 'react-icons/bi';
+import { VscChromeClose } from 'react-icons/vsc';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
-import { SideBar } from "../styles/Sidebar.Styled";
-
+import { SideBar } from '../styles/Sidebar.Styled';
 
 export default function Sidebar() {
   const navigate = useNavigate();
 
-  const { pathname } = useLocation();
-
   const [navbarState, setNavbarState] = useState(false);
 
-  const html = document.querySelector("html");
-  html.addEventListener("click", () => setNavbarState(false));
+  const html = document.querySelector('html');
+  html.addEventListener('click', () => setNavbarState(false));
 
   return (
     <>
@@ -37,7 +34,7 @@ export default function Sidebar() {
                 <VscChromeClose onClick={() => setNavbarState(false)} />
               ) : (
                 <GiHamburgerMenu
-                  onClick={(e) => {
+                  onClick={e => {
                     e.stopPropagation();
                     setNavbarState(true);
                   }}
@@ -46,15 +43,8 @@ export default function Sidebar() {
             </div>
           </div>
 
-          <div className={`links ${navbarState ? "showLinks" : ""}`}>
-            <NavLink
-              to="/patients"
-              className={`${
-                pathname === "/edit-patient" || pathname === "/add-patient"
-                  ? "active"
-                  : ""
-              }`}
-            >
+          <div className={`links ${navbarState ? 'showLinks' : ''}`}>
+            <NavLink to="/patients">
               <ImProfile />
               <span> Patient</span>
             </NavLink>
@@ -71,15 +61,14 @@ export default function Sidebar() {
               <span> Analytics</span>
             </NavLink>
           </div>
-          
         </div>
 
-        <div className={`logout ${navbarState ? "showLogout" : ""}`}>
+        <div className={`logout ${navbarState ? 'showLogout' : ''}`}>
           <Link
             to="/login"
             onClick={() => {
-              localStorage.removeItem("token");
-              navigate("/login");
+              localStorage.removeItem('token');
+              navigate('/login');
             }}
           >
             <BiLogOut />
@@ -90,4 +79,3 @@ export default function Sidebar() {
     </>
   );
 }
-

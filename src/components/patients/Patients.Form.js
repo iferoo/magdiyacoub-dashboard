@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AddPatientSection } from '../../styles/Patients.Styled';
+import PatientsImg from './Patients.Img';
 
-export default function AddPatient() {
+export default function PatientForm({
+  value,
+  onSubmit,
+  doctors,
+  nurses,
+  rooms,
+  beds,
+}) {
+  const [newBeds, setNewBeds] = useState([]);
   const {
     register,
     handleSubmit,
     setValue,
-    // formState: { errors },
+    getValues,
+    formState: { errors },
   } = useForm({
     defaultValues: {
       patient: {
@@ -15,7 +25,7 @@ export default function AddPatient() {
         Img: null,
         Name: '',
         MedicalID: null,
-        Room: '',
+        Room: 0,
         Status: '',
         Condition: '',
         Age: null,
@@ -32,28 +42,34 @@ export default function AddPatient() {
       },
     },
   });
-  // const onImgChange = (e) => {
-  //   const file = e.target.files[0];
-  //   const storageRef = app.storage().ref();
-  //   const fileRef = storageRef.child(file.name);
-  //   fileRef.put(file).then(() => {
-  //     console.log("uploaded a file");
-  //   });
-  // };
 
-  const onSubmit = data => {};
-  // console.log(errors);
+  const [img, setImg] = useState(null);
+
+  const onImgChange = event => {
+    setImg(URL.createObjectURL(event.target.files[0]));
+    // console.log(event.target.files[0]);
+    // setValue('patient.Img', event.target.files[0]);
+  };
 
   return (
     <AddPatientSection>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="patientProfile">
-          {/* <img src="/assets/Patient.png" alt="patient" /> */}
-          <input
-            type="file"
-            accept="image/jpeg,image/png,image/gif"
-            {...register('patient.Img', {})}
-          />
+          <div className="patientImage">
+            <input
+              type="file"
+              accept="image/jpeg,image/png,image/gif"
+              onChange={event => {
+                onImgChange(event);
+              }}
+              {...register("patient.Img", {})}
+            />
+            <img
+              src={img === null ? 'assets/Patient.png' : img}
+              alt="patient"
+            />
+          </div>
+
           <div className="profile">
             <div className="inputAlign">
               <label htmlFor="name">Name</label>
@@ -70,10 +86,20 @@ export default function AddPatient() {
                 id="room"
                 type="text"
                 placeholder=""
+                onChangeCapture={event => {
+                  const filteredBeds = beds.filter(
+                    bed => bed.RoomID === parseInt(event.target.value)
+                  );
+                  setNewBeds(filteredBeds);
+                }}
                 {...register('patient.Room' /* { required: true } */)}
               >
                 <option value="none" style={{ display: 'none' }}></option>
-                <option>One</option>
+                {rooms.map(room => (
+                  <option key={room.id} value={room.id}>
+                    {room.Name}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="inputAlign">
@@ -85,7 +111,15 @@ export default function AddPatient() {
                 {...register('patient.Bed' /* { required: true } */)}
               >
                 <option value="none" style={{ display: 'none' }}></option>
-                <option>One</option>
+                {newBeds.map(bed => (
+                  <option
+                    key={bed.id}
+                    value={bed.id}
+                    disabled={bed.Patient !== null}
+                  >
+                    {bed.id}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="inputAlign">
@@ -162,7 +196,11 @@ export default function AddPatient() {
                   {...register('patient.Nurse' /* { required: true } */)}
                 >
                   <option value="none" style={{ display: 'none' }}></option>
-                  <option>One</option>
+                  {nurses.map(nurse => (
+                    <option key={nurse.id} value={nurse.id}>
+                      {nurse.Name}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="inputAlign">
@@ -173,7 +211,11 @@ export default function AddPatient() {
                   {...register('patient.Doctor' /* { required: true } */)}
                 >
                   <option value="none" style={{ display: 'none' }}></option>
-                  <option>One</option>
+                  {doctors.map(doctor => (
+                    <option key={doctor.id} value={doctor.id}>
+                      {doctor.Name}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
@@ -233,7 +275,7 @@ export default function AddPatient() {
         </div>
         <div className="line"></div>
         <div className="submit">
-          <input type="submit" value="Add" />
+          <input type="submit" value={value} />
         </div>
       </form>
     </AddPatientSection>

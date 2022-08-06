@@ -1,30 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import { getPatients } from '../../store/patientSlice';
-
+import React, { useEffect } from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 import { PageSection } from '../../styles/Global';
 import Loading from '../Loading';
 
-export default function PatientsPage() {
-  const { pathname } = useLocation();
-  const [activeLink, setActiveLink] = useState(1);
+import { getDoctors } from '../../store/doctorSlice';
+import { getNurses } from '../../store/nurseSlice';
+import { getPatients } from '../../store/patientSlice';
+import { getRooms } from '../../store/roomSlice';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { getBeds } from '../../store/bedSlice';
+
+export default function PatientsPage() {
   const dispatch = useDispatch();
 
-  const { isLoading, patients } = useSelector(state => state.patients);
+  const { patients } = useSelector(state => state.patients);
+  const { doctors } = useSelector(state => state.doctors);
+  const { nurses } = useSelector(state => state.nurses);
+  const { rooms } = useSelector(state => state.rooms);
+  const { beds } = useSelector(state => state.beds);
+  const isPatientsLoading = useSelector(state => state.patients.isLoading);
+  const isNursesLoading = useSelector(state => state.nurses.isLoading);
+  const isDoctorsLoading = useSelector(state => state.doctors.isLoading);
+  const isRoomsLoading = useSelector(state => state.rooms.isLoading);
+  const isBedsLoading = useSelector(state => state.beds.isLoading);
 
   useEffect(() => {
     dispatch(getPatients());
+    dispatch(getDoctors());
+    dispatch(getNurses());
+    dispatch(getRooms());
+    dispatch(getBeds());
   }, [dispatch]);
-
-  useEffect(() => {
-    const handleActiveLink = () => {
-      pathname === '/patients/add' ? setActiveLink(2) : setActiveLink(1);
-    };
-
-    handleActiveLink();
-  }, [pathname]);
 
   return (
     <PageSection>
@@ -32,25 +39,23 @@ export default function PatientsPage() {
         <div className="top">
           <h2>Patients</h2>
           <div>
-            <Link
-              to=""
-              className={`${activeLink === 1 && 'active'}`}
-              onClick={() => setActiveLink(1)}
-            >
-              View
-            </Link>
-            <Link
-              to="add"
-              className={`${activeLink === 2 && 'active'}`}
-              onClick={() => setActiveLink(2)}
-            >
-              Add
-            </Link>
+            <NavLink to="/patients/view">View</NavLink>
+            <NavLink to="/patients/add">Add</NavLink>
           </div>
         </div>
 
         <div className="down">
-          {isLoading ? <Loading /> : <Outlet context={[patients, dispatch]} />}
+          {isPatientsLoading &&
+          isDoctorsLoading &&
+          isNursesLoading &&
+          isRoomsLoading &&
+          isBedsLoading ? (
+            <Loading />
+          ) : (
+            <Outlet
+              context={[patients, doctors, nurses, rooms, beds, dispatch]}
+            />
+          )}
         </div>
       </div>
     </PageSection>

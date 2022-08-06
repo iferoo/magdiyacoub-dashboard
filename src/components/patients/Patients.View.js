@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { BiSearch } from 'react-icons/bi';
 
-import AddPatient from './Patients.Form';
-
 import { ViewPatientSection } from '../../styles/Patients.Styled';
 import { useOutletContext } from 'react-router-dom';
+import PatientForm from './Patients.Form';
 
 export default function ViewPatient() {
-  const handleSearch = event => {};
-  const [activePatient, setActivePatient] = useState(0);
-  const [patients] = useOutletContext();
+  const [patients, doctors, nurses, rooms, beds] = useOutletContext();
 
-  useEffect(() => {
-    console.log(activePatient);
-  }, [activePatient]);
+  const [activePatient, setActivePatient] = useState(0);
+
+  const handleSearch = event => {};
+
+  const onSubmit = patient => {
+    console.log(patient);
+  };
+
   const patientsList = patients => {
     return patients.map(patient => (
       <div
@@ -22,7 +24,9 @@ export default function ViewPatient() {
         key={patient.id}
         onClick={() => setActivePatient(patient.id)}
       >
-        <div className={activePatient === patient.id ? 'active' : 'nonActive'}></div>
+        <div
+          className={activePatient === patient.id ? 'active' : 'nonActive'}
+        ></div>
         <div className="info">
           <h3>{patient.Name}</h3>
           <h6>Patient ID: {patient.id}</h6>
@@ -31,6 +35,7 @@ export default function ViewPatient() {
       </div>
     ));
   };
+
   return (
     <ViewPatientSection>
       <div className="left">
@@ -53,7 +58,14 @@ export default function ViewPatient() {
       </div>
 
       <div className="right">
-        <AddPatient />
+        <PatientForm
+          value="update"
+          onSubmit={onSubmit}
+          doctors={doctors}
+          nurses={nurses}
+          rooms={rooms}
+          beds={beds}
+        />
       </div>
     </ViewPatientSection>
   );
