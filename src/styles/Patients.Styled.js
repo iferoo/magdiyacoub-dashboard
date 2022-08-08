@@ -114,12 +114,19 @@ export const AddPatientSection = styled.section`
       border-radius: 0.2rem;
       padding: 0.5rem;
       &:hover {
-        color: #fff;
+        /* color: #fff; */
         background-color: #0b5ed7;
         border-color: #0a58ca;
       }
     }
+    .delete {
+      background-color: ${({ theme }) => theme.colors.secondary};
+      &:hover {
+        background-color: #db1b1e;
+      }
+    }
   }
+
   .inputAlign {
     display: flex;
     align-items: center;

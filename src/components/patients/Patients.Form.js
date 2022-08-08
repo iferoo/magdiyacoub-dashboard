@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { AddPatientSection } from '../../styles/Patients.Styled';
-import PatientsImg from './Patients.Img';
 
 export default function PatientForm({
   value,
@@ -10,39 +8,13 @@ export default function PatientForm({
   nurses,
   rooms,
   beds,
+  register,
+  handleSubmit,
+  getValues,
+  newBeds,
+  setNewBeds,
+  isDelete,
 }) {
-  const [newBeds, setNewBeds] = useState([]);
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    getValues,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      patient: {
-        id: null,
-        Img: null,
-        Name: '',
-        MedicalID: null,
-        Room: 0,
-        Status: '',
-        Condition: '',
-        Age: null,
-        Gender: '',
-        RegisterDate: '',
-        Branch: '',
-        Nurse: '',
-        Doctor: '',
-        Disease: null,
-        History: '',
-        OtherDiseases: '',
-        Diabeyic: false,
-        Smoker: false,
-      },
-    },
-  });
-
   const [img, setImg] = useState(null);
 
   const onImgChange = event => {
@@ -62,7 +34,7 @@ export default function PatientForm({
               onChange={event => {
                 onImgChange(event);
               }}
-              {...register("patient.Img", {})}
+              {...register('patient.Img', {})}
             />
             <img
               src={img === null ? 'assets/Patient.png' : img}
@@ -276,6 +248,7 @@ export default function PatientForm({
         <div className="line"></div>
         <div className="submit">
           <input type="submit" value={value} />
+          {isDelete === true ? <input type="button" value="delete" className='delete'/> : <></>}
         </div>
       </form>
     </AddPatientSection>

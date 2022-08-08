@@ -15,6 +15,7 @@ export const ViewRoomsSection = styled.section`
         display: flex;
         align-items: center;
         gap: 0.5rem;
+
         svg {
           font-size: 2rem;
           &:active {
@@ -72,6 +73,12 @@ export const ViewRoomsSection = styled.section`
     justify-content: space-between;
     align-items: center;
     align-content: center;
+    border: 1px solid ${({ theme }) => theme.colors.fourth};
+    border-radius: 1rem;
+    box-shadow: 1px 1px 5px ${({ theme }) => theme.colors.fourth};
+
+    padding: 1rem;
+    margin-top: 0.2rem;
     svg {
       font-size: 1.2rem;
       margin-right: 2.5rem;
@@ -88,6 +95,9 @@ export const ViewRoomsSection = styled.section`
       color: ${({ theme }) => theme.fontsColors.secondary};
       padding: 0.5rem 0.5rem 0rem 0;
       margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      width: 15%;
+
       :focus {
         outline: none;
         border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
