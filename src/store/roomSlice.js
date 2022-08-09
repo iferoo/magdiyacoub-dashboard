@@ -20,7 +20,6 @@ export const addRoom = createAsyncThunk(
   async (room, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      console.log(room);
       const res = await fetch(roomUrl, {
         method: 'POST',
         body: JSON.stringify({ Name: room.Name }),
@@ -30,7 +29,6 @@ export const addRoom = createAsyncThunk(
       });
       //report
       const data = await res.json();
-      console.log(data);
       return data.data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -43,7 +41,6 @@ export const updateRoom = createAsyncThunk(
   async (room, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      console.log(room);
       const res = await fetch(roomUrl + room.room.id, {
         method: 'PUT',
         body: JSON.stringify({ Name: room.Name }),
@@ -53,7 +50,6 @@ export const updateRoom = createAsyncThunk(
       });
       //report
       const data = await res.json();
-      console.log(data);
       return data.data;
     } catch (error) {
       return rejectWithValue(error.message);

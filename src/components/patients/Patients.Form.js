@@ -14,12 +14,12 @@ export default function PatientForm({
   newBeds,
   setNewBeds,
   isDelete,
+  handleDelete,
 }) {
   const [img, setImg] = useState(null);
 
   const onImgChange = event => {
     setImg(URL.createObjectURL(event.target.files[0]));
-    // console.log(event.target.files[0]);
     // setValue('patient.Img', event.target.files[0]);
   };
 
@@ -248,7 +248,16 @@ export default function PatientForm({
         <div className="line"></div>
         <div className="submit">
           <input type="submit" value={value} />
-          {isDelete === true ? <input type="button" value="delete" className='delete'/> : <></>}
+          {isDelete === true ? (
+            <input
+              type="button"
+              value="delete"
+              className="delete"
+              onClick={() => handleDelete()}
+            />
+          ) : (
+            <></>
+          )}
         </div>
       </form>
     </AddPatientSection>

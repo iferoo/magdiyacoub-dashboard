@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { logInsert } from "./reportSlice";
 
 export const getBooks = createAsyncThunk(
   "book/getBooks",
@@ -30,10 +29,8 @@ export const insertBook = createAsyncThunk(
       });
       //report
       const data = await res.json();
-      dispatch(logInsert({ name: "insertBook", status: "succsess" }));
       return data;
     } catch (error) {
-      dispatch(logInsert({ name: "insertBook", status: "failed" }));
       return rejectWithValue(error.message);
     }
   }

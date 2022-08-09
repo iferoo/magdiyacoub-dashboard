@@ -10,7 +10,7 @@ export const getPatients = createAsyncThunk(
     try {
       const res = await fetch(patientsUrl);
       const data = await res.json();
-      return data;
+      return data.data;
     } catch (error) {
       return rejectWithValue(error.message);
     }
@@ -52,7 +52,7 @@ export const addPatients = createAsyncThunk(
       .then(function (response) {
         succNotify('Add Successfully');
         dispatch(getPatients());
-        return response.data;
+        return response.data.data;
       })
       .catch(function (error) {
         return rejectWithValue(error.message);
@@ -95,11 +95,29 @@ export const updatePatients = createAsyncThunk(
       .then(function (response) {
         succNotify('Update Successfully');
         dispatch(getPatients());
-        return response.data;
+        return response.data.data;
       })
       .catch(function (error) {
         return rejectWithValue(error.message);
       });
+  }
+);
+
+export const deletePatient = createAsyncThunk(
+  'patient/deletePatient',
+  async (patient, thunkAPI) => {
+    const { rejectWithValue } = thunkAPI;
+    try {
+      const res = await fetch(patientsUrl + patient.id, {
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+      return patient;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
   }
 );
 
@@ -114,7 +132,7 @@ const patientSlice = createSlice({
     },
     [getPatients.fulfilled]: (state, action) => {
       state.isLoading = false;
-      state.patients = action.payload.data;
+      state.patients = action.payload;
     },
     [getPatients.rejected]: (state, action) => {
       state.isLoading = false;
@@ -141,6 +159,19 @@ const patientSlice = createSlice({
       state.isLoading = false;
     },
     [updatePatients.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    //delete books
+    [deletePatient.pending]: (state, action) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [deletePatient.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.patients = state.patients.filter(patient => patient.id !== action.payload.id);
+    },
+    [deletePatient.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },

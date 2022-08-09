@@ -14,7 +14,7 @@ export default function PatientsAdd() {
   const {
     register,
     handleSubmit,
-
+    setValue,
     // formState: { errors },
   } = useForm({
     defaultValues: {
@@ -44,7 +44,27 @@ export default function PatientsAdd() {
 
   const onSubmit = patient => {
     dispatch(addPatients(patient.patient));
-    console.log(patient.patient);
+    setValue('patient', {
+      id: null,
+      Img: null,
+      Name: '',
+      MedicalID: null,
+      Room: 'none',
+      Bed: 'none',
+      Status: '',
+      Condition: '',
+      Age: null,
+      Gender: '',
+      RegisterDate: '',
+      Branch: '',
+      Nurse: '',
+      Doctor: '',
+      Disease: null,
+      History: '',
+      OtherDiseases: '',
+      Diabeyic: false,
+      Smoker: false,
+    });
   };
 
   return (

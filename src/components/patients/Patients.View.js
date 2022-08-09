@@ -6,7 +6,7 @@ import { BiSearch } from 'react-icons/bi';
 import { ViewPatientSection } from '../../styles/Patients.Styled';
 import { useOutletContext } from 'react-router-dom';
 import PatientForm from './Patients.Form';
-import { updatePatients } from '../../store/patientSlice';
+import { deletePatient, updatePatients } from '../../store/patientSlice';
 
 export default function ViewPatient() {
   const [patients, doctors, nurses, rooms, beds, dispatch] = useOutletContext();
@@ -52,6 +52,31 @@ export default function ViewPatient() {
     setNewPatients(newPatientsList);
   };
 
+  const handleDelete = () => {
+    dispatch(deletePatient(activePatient));
+    setValue('patient', {
+      id: null,
+      Img: null,
+      Name: '',
+      MedicalID: null,
+      Room: 'none',
+      Bed: 'none',
+      Status: '',
+      Condition: '',
+      Age: null,
+      Gender: '',
+      RegisterDate: '',
+      Branch: '',
+      Nurse: '',
+      Doctor: '',
+      Disease: null,
+      History: '',
+      OtherDiseases: '',
+      Diabeyic: false,
+      Smoker: false,
+    });
+  };
+
   const onSubmit = patient => {
     dispatch(updatePatients(patient.patient));
   };
@@ -71,7 +96,7 @@ export default function ViewPatient() {
           );
           setNewBeds(filteredBeds);
 
-          setActivePatient(patient.id);
+          setActivePatient(patient);
 
           setTimeout(() => {
             setValue('patient', {
@@ -99,7 +124,7 @@ export default function ViewPatient() {
         }}
       >
         <div
-          className={activePatient === patient.id ? 'active' : 'nonActive'}
+          className={activePatient.id === patient.id ? 'active' : 'nonActive'}
         ></div>
         <div className="info">
           <h3>{patient.Name}</h3>
@@ -144,6 +169,7 @@ export default function ViewPatient() {
           newBeds={newBeds}
           setNewBeds={setNewBeds}
           isDelete={true}
+          handleDelete={handleDelete}
         />
       </div>
     </ViewPatientSection>
