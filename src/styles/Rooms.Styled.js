@@ -15,21 +15,6 @@ export const ViewRoomsSection = styled.section`
         display: flex;
         align-items: center;
         gap: 0.5rem;
-
-        svg {
-          font-size: 2rem;
-          &:active {
-            animation: press 0.2s 1 linear;
-          }
-        }
-        svg:first-child {
-          font-size: 1.2rem;
-          color: ${({ theme }) => theme.colors.third};
-        }
-        svg:nth-child(2) {
-          font-size: 1.2rem;
-          color: ${({ theme }) => theme.colors.secondary};
-        }
       }
     }
     .roomInfo {
@@ -68,17 +53,12 @@ export const ViewRoomsSection = styled.section`
   form {
     width: 100%;
   }
+
   .roomEdit {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    align-content: center;
-    border: 1px solid ${({ theme }) => theme.colors.fourth};
-    border-radius: 1rem;
-    box-shadow: 1px 1px 5px ${({ theme }) => theme.colors.fourth};
-
-    padding: 1rem;
-    margin-top: 0.2rem;
+    margin-top: 1rem;
     svg {
       font-size: 1.2rem;
       margin-right: 2.5rem;
@@ -102,6 +82,36 @@ export const ViewRoomsSection = styled.section`
         outline: none;
         border-bottom: 1px solid ${({ theme }) => theme.colors.secondary};
       }
+    }
+  }
+  .roomButton {
+    padding: 0.4rem 0.8rem;
+    border-radius: 1rem;
+    background-color: ${({ theme }) => theme.colors.third};
+    display: flex;
+    align-items: center;
+    align-content: center;
+    &:first-child {
+      background-color: ${({ theme }) => theme.colors.fourth};
+    }
+    &:nth-child(2) {
+      background-color: ${({ theme }) => theme.colors.secondary};
+    }
+
+    svg {
+      font-size: 2rem;
+      color: ${({ theme }) => theme.colors.primary};
+      &:active {
+        animation: press 0.2s 1 linear;
+      }
+    }
+    svg:first-child {
+      font-size: 1.2rem;
+      /* color: ${({ theme }) => theme.colors.third}; */
+    }
+    svg:nth-child(2) {
+      font-size: 1.2rem;
+      /* color: ${({ theme }) => theme.colors.secondary}; */
     }
   }
   @keyframes press {

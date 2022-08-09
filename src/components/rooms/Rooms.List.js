@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import RoomsBeds from './Rooms.Beds';
 
-import {
-  IoMdArrowDropright,
-  IoMdArrowDropdown,
-} from 'react-icons/io';
+import { IoMdArrowDropright, IoMdArrowDropdown } from 'react-icons/io';
 import { FaRegEdit, FaMinus } from 'react-icons/fa';
-import { BsCheck2Square } from 'react-icons/bs';
 import { deleteRoom, updateRoom } from '../../store/roomSlice';
+import { AiOutlineCheck } from 'react-icons/ai';
 
 export default function RoomList({ room, dispatch }) {
   const [isEdit, setIsEdit] = useState(false);
@@ -24,21 +21,35 @@ export default function RoomList({ room, dispatch }) {
         <div className="address">
           <h3 className="name">{room.Name}</h3>
           <div>
-            <FaRegEdit onClick={() => setIsEdit(!isEdit)} />
-            <FaMinus onClick={() => dispatch(deleteRoom(room))} />
-            <IoMdArrowDropdown
-              id={`room${room.id}`}
-              className="hide"
+            <div className="roomButton" onClick={() => setIsEdit(!isEdit)}>
+              <FaRegEdit />
+            </div>
+            <div
+              className="roomButton"
+              onClick={() => dispatch(deleteRoom(room))}
+            >
+              <FaMinus />
+            </div>
+            <div
+              className="roomButton"
               onClick={() => {
                 roomToggle(`room${room.id}`);
               }}
-            />
-            <IoMdArrowDropright
-              id={`room${room.id}`}
-              onClick={() => {
-                roomToggle(`room${room.id}`);
-              }}
-            />
+            >
+              <IoMdArrowDropdown
+                id={`room${room.id}`}
+                className="hide"
+                onClick={() => {
+                  roomToggle(`room${room.id}`);
+                }}
+              />
+              <IoMdArrowDropright
+                id={`room${room.id}`}
+                onClick={() => {
+                  roomToggle(`room${room.id}`);
+                }}
+              />
+            </div>
           </div>
         </div>
         <RoomsBeds room={room} beds={room.Beds} dispatch={dispatch} />
@@ -60,11 +71,18 @@ export default function RoomList({ room, dispatch }) {
             defaultValue={room.Name}
             onChange={event => setRoomName(event.target.value)}
           />
-          <BsCheck2Square
+          <div
+            className="roomButton"
             onClick={() => {
               onSubmit();
             }}
-          />
+          >
+            <AiOutlineCheck
+              onClick={() => {
+                onSubmit();
+              }}
+            />
+          </div>
         </div>
       </form>
     );

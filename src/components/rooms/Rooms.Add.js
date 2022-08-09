@@ -23,7 +23,7 @@ export default function RoomsAdd({ dispatch }) {
             onSubmit(event);
           }}
         >
-          Add Room
+          Add
         </button>
       </div>
     </form>

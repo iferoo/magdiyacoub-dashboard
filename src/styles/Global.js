@@ -21,8 +21,9 @@ export const PageSection = styled.section`
   padding: 2rem;
   background-color: ${({ theme }) => theme.colors.third};
   min-height: 100vh;
-
+  
   .container {
+    border-radius: 1rem;
     background-color: ${({ theme }) => theme.colors.primary};
     width: 100%;
     margin: 0 auto;
@@ -73,7 +74,7 @@ export const PageSection = styled.section`
     padding: 0.5rem 1rem;
     cursor: pointer;
     color: #fff;
-    background-color: ${({theme})=>theme.colors.third};
+    background-color: ${({ theme }) => theme.colors.third};
     text-align: center;
     border: none;
     border-radius: 1rem;
