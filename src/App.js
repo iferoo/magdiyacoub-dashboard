@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import PatientsPage from './components/patients/Patients.Page';
 import ViewPatient from './components/patients/Patients.View';
+import PatientsAdd from './components/patients/Patients.Add';
 
 import StaffPage from './components/staff/Staff.Page';
 import ViewStaff from './components/staff/Staff.View';
@@ -15,6 +16,9 @@ import AddStaff from './components/staff/Staff.Add';
 import RoomsPage from './components/rooms/Rooms.Page';
 import ViewRooms from './components/rooms/Rooms.View';
 
+import AnalyticsPage from './components/analytics/Analytics.Page';
+import TodayAnalytics from './components/analytics/Analytics.Today';
+
 import LogIn from './components/sign/Sign.LogIn';
 import SignUp from './components/sign/Sign.SignUp';
 import ForgetPassword from './components/sign/Sign.ForgetPassword';
@@ -23,15 +27,9 @@ import SignPage from './pages/SignPages';
 import AppPages from './pages/AppPages';
 
 import NotFoundPage from './pages/NotFoundPage';
-import Analytics from './components/analytics/Analytics.Page';
-import TodayAnalytics from './components/analytics/Analytics.Today';
-import WeekAnalytics from './components/analytics/Analytics.Week';
-import MonthAnalytics from './components/analytics/Analytics.Month';
-import YearAnalytics from './components/analytics/Analytics.Year';
 
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/Global';
-import PatientsAdd from './components/patients/Patients.Add';
 
 const theme = {
   colors: {
@@ -56,7 +54,7 @@ function App() {
         <GlobalStyles />
         <Routes>
           <Route path="/" element={<AppPages />}>
-            <Route index element={<Navigate to="/patients" replace />} />
+            <Route index element={<Navigate to="/analytics" replace />} />
             <Route path="patients" element={<PatientsPage />}>
               <Route index element={<Navigate to="view" replace />} />
               <Route path="view" element={<ViewPatient />} />
@@ -71,12 +69,9 @@ function App() {
               <Route path="Update" element={<UpdateStaff />} />
               <Route path="add" element={<AddStaff />} />
             </Route>
-            <Route path="/analytics" element={<Analytics />}>
+            <Route path="/analytics" element={<AnalyticsPage />}>
               <Route index element={<Navigate to="today" replace />} />
               <Route path="today" element={<TodayAnalytics />} />
-              <Route path="week" element={<WeekAnalytics />} />
-              <Route path="month" element={<MonthAnalytics />} />
-              <Route path="year" element={<YearAnalytics />} />
             </Route>
           </Route>
           <Route path="/" element={<SignPage />}>

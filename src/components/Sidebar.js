@@ -44,6 +44,10 @@ export default function Sidebar() {
           </div>
 
           <div className={`links ${navbarState ? 'showLinks' : ''}`}>
+            <NavLink to="/analytics">
+              <BsFillChatTextFill />
+              <span> Analytics</span>
+            </NavLink>
             <NavLink to="/patients">
               <ImProfile />
               <span> Patient</span>
@@ -55,10 +59,6 @@ export default function Sidebar() {
             <NavLink to="/staff">
               <MdEngineering />
               <span> Staff</span>
-            </NavLink>
-            <NavLink to="/analytics">
-              <BsFillChatTextFill />
-              <span> Analytics</span>
             </NavLink>
           </div>
         </div>

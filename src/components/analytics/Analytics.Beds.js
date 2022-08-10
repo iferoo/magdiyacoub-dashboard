@@ -1,6 +1,13 @@
 import React from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 
+var data = [
+  { name: 'Full', value: 10 },
+  { name: 'Free', value: 30 },
+];
+
+const COLORS = ['#888888', 'green'];
+
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({
   cx,
@@ -28,21 +35,21 @@ const renderCustomizedLabel = ({
   );
 };
 
-export default function AnalyticsPie({ data, COLORS }) {
+export default function AnalyticsBeds() {
   return (
     <div className="char">
       <div className="charTitle">
-        <h1>Rooms</h1>
+        <h1>Beds</h1>
       </div>
       <div className="charGraph">
-        <PieChart width={250} height={250}>
+        <PieChart width={400} height={400}>
           <Pie
             data={data}
-            cx={120}
-            cy={120}
+            cx={200}
+            cy={200}
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={120}
+            outerRadius={180}
             fill="#8884d8"
             dataKey="value"
           >
@@ -54,17 +61,17 @@ export default function AnalyticsPie({ data, COLORS }) {
             ))}
           </Pie>
         </PieChart>
+        <div className="charInfo">
+          <div>
+            <span className={data[0].name}></span>
+            <p>{data[0].name}</p>
+          </div>
+          <div>
+            <span className={data[1].name}></span>
+            <p>{data[1].name}</p>
+          </div>
+        </div>
       </div>
-      {/* <div className="charInfo">
-        <div>
-          <span className={data[0].name}></span>
-          <p>{data[0].name}</p>
-        </div>
-        <div>
-          <span className={data[1].name}></span>
-          <p>{data[1].name}</p>
-        </div>
-      </div> */}
     </div>
   );
 }

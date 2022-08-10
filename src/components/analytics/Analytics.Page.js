@@ -1,25 +1,21 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import { PageSection } from '../../styles/Global';
+import { Outlet } from 'react-router-dom';
+import { AnalyticsSection } from '../../styles/Analytics.Styled';
+import AnalyticsWidget from './Analytics.Widget';
 
 export default function AnalyticsPage() {
   return (
-    <PageSection>
+    <AnalyticsSection>
       <div className="container">
         <div className="top">
           <h2>Analytics</h2>
-          <div className="date">
-            <NavLink to="today">Today</NavLink>
-            <NavLink to="week">This week</NavLink>
-            <NavLink to="month">This month</NavLink>
-            <NavLink to="year">This year</NavLink>
-          </div>
         </div>
 
         <div className="down">
+          <AnalyticsWidget />
           <Outlet />
         </div>
       </div>
-    </PageSection>
+    </AnalyticsSection>
   );
 }
