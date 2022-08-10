@@ -1,10 +1,7 @@
 import React from 'react';
 import { PieChart, Pie, Cell } from 'recharts';
 
-var data = [
-  { name: 'Full', value: 10 },
-  { name: 'Free', value: 30 },
-];
+
 
 const COLORS = ['#888888', 'green'];
 
@@ -35,7 +32,7 @@ const renderCustomizedLabel = ({
   );
 };
 
-export default function AnalyticsBeds() {
+export default function AnalyticsBeds({data}) {
   return (
     <div className="char">
       <div className="charTitle">

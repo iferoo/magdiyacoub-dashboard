@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { PageSection } from '../../styles/Global';
+
 import Loading from '../Loading';
 
 import { getDoctors } from '../../store/doctorSlice';
 import { getNurses } from '../../store/nurseSlice';
 import { getPatients } from '../../store/patientSlice';
 import { getRooms } from '../../store/roomSlice';
-
-import { useDispatch, useSelector } from 'react-redux';
 import { getBeds } from '../../store/bedSlice';
 
 export default function PatientsPage() {

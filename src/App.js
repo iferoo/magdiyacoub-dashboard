@@ -70,8 +70,7 @@ function App() {
               <Route path="add" element={<AddStaff />} />
             </Route>
             <Route path="/analytics" element={<AnalyticsPage />}>
-              <Route index element={<Navigate to="today" replace />} />
-              <Route path="today" element={<TodayAnalytics />} />
+              <Route index element={<TodayAnalytics />} />
             </Route>
           </Route>
           <Route path="/" element={<SignPage />}>

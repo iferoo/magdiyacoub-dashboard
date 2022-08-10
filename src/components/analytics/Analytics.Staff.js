@@ -9,25 +9,9 @@ import {
   BarChart,
 } from 'recharts';
 
-const data = [
-  {
-    name: 'On Duty',
-    Doctors: 20,
-    Nurses: 35,
-  },
-  {
-    name: 'Next Shift',
-    Doctors: 15,
-    Nurses: 20,
-  },
-  {
-    name: 'Vacation',
-    Doctors: 35,
-    Nurses: 40,
-  },
-];
 
-export default function AnalyticsStaff() {
+
+export default function AnalyticsStaff({ data }) {
   return (
     <div className="char">
       <div className="charTitle">
