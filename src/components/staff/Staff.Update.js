@@ -168,7 +168,7 @@ export default function UpdateStaff() {
           <input type="submit" value="Update" />
         </div>
       </form>
-    </Updat>
+    </UpdateStaffSection>
   );
 }
 
