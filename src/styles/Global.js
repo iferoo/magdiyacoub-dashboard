@@ -21,7 +21,7 @@ export const PageSection = styled.section`
   padding: 2rem;
   background-color: ${({ theme }) => theme.colors.third};
   min-height: 100vh;
-  
+
   .container {
     border-radius: 1rem;
     background-color: ${({ theme }) => theme.colors.primary};
@@ -84,6 +84,36 @@ export const PageSection = styled.section`
       color: #fff;
       background-color: #0b5ed7;
       border-color: #0a58ca;
+    }
+  }
+
+  .submit {
+    padding: 1rem 3rem;
+    input {
+      width: 100%;
+      margin: 0.5rem auto;
+      cursor: pointer;
+      color: #fff;
+      text-align: center;
+      background-color: #0d6efd;
+      border-color: #0d6efd;
+      font-size: 1rem;
+      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      border: none;
+      border-radius: 0.2rem;
+      padding: 0.5rem;
+      &:hover {
+        /* color: #fff; */
+        background-color: #0b5ed7;
+        border-color: #0a58ca;
+      }
+    }
+    .delete {
+      background-color: ${({ theme }) => theme.colors.secondary};
+      &:hover {
+        background-color: #db1b1e;
+      }
     }
   }
   @media screen and (min-width: 280px) and (max-width: 1080px) {

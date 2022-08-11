@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useOutletContext } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import { BiSearch } from 'react-icons/bi';
 
-import { ViewPatientSection } from '../../styles/Patients.Styled';
-import { useOutletContext } from 'react-router-dom';
 import PatientForm from './Patients.Form';
+
 import { deletePatient, updatePatients } from '../../store/patientSlice';
+
+import { ViewPatientSection } from '../../styles/Patients.Styled';
 
 export default function ViewPatient() {
   const [patients, doctors, nurses, rooms, beds, dispatch] = useOutletContext();
