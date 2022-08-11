@@ -9,7 +9,7 @@ export default function ViewStaff() {
   const doctorsFilterd = {
     onDuty: doctors.filter(doctor => doctor.Status === 'onDuty'),
     nextShift: doctors.filter(doctor => doctor.Status === 'nextShift'),
-    vacation: doctors.filter(doctor => doctor.Status === 'onDuty'),
+    vacation: doctors.filter(doctor => doctor.Status === 'vacation'),
   };
 
   const nursesFiltered = {

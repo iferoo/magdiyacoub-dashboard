@@ -36,6 +36,28 @@ export const addDoctor = createAsyncThunk(
   }
 );
 
+export const updateDoctor = createAsyncThunk(
+  'doctor/updateDoctors',
+  async (doctor, thunkAPI) => {
+    const { rejectWithValue, dispatch } = thunkAPI;
+    try {
+      const res = await fetch(doctorsUrl + doctor.id, {
+        method: 'PUT',
+        body: JSON.stringify(doctor),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+      //report
+      const data = await res.json();
+      dispatch(getDoctors());
+      return data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const doctorSlice = createSlice({
   name: 'doctor',
   initialState: { doctors: [], isLoading: false, error: null },
@@ -64,6 +86,18 @@ const doctorSlice = createSlice({
       state.doctors.push(action.payload.data);
     },
     [addDoctor.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    //aupdate doctors
+    [updateDoctor.pending]: (state, action) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [updateDoctor.fulfilled]: (state, action) => {
+      state.isLoading = false;
+    },
+    [updateDoctor.rejected]: (state, action) => {
       state.isLoading = false;
       state.error = action.payload;
     },

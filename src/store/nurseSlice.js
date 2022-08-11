@@ -36,6 +36,28 @@ export const addNurse = createAsyncThunk(
   }
 );
 
+export const updateNurse = createAsyncThunk(
+  'nurse/updateNurses',
+  async (nurse, thunkAPI) => {
+    const { rejectWithValue, dispatch } = thunkAPI;
+    try {
+      const res = await fetch(nursesUrl + nurse.id, {
+        method: 'PUT',
+        body: JSON.stringify(nurse),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      });
+      //report
+      const data = await res.json();
+      dispatch(getNurses());
+      return data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const nurseSlice = createSlice({
   name: 'nurse',
   initialState: { nurses: [], isLoading: false, error: null },

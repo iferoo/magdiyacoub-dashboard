@@ -1,9 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { useOutletContext } from 'react-router-dom';
 
 import styled from 'styled-components';
+import { updateDoctor } from '../../store/doctorSlice';
 
 export default function UpdateStaff() {
+  const dispatch = useDispatch();
+  const [doctors, nurses] = useOutletContext();
+
+  const [staff, setStaff] = useState([]);
+  const [selectedField, setSelectedField] = useState('');
+
   const {
     register,
     handleSubmit,
@@ -22,7 +31,19 @@ export default function UpdateStaff() {
     },
   });
 
-  const onSubmit = data => {};
+  const onSubmit = data => {
+    data.staff.Type === 'Doctor'
+      ? dispatch(updateDoctor(data.staff))
+      : dispatch(updateDoctor(data.staff));
+    setValue('staff', {
+      Name: '',
+      id: null,
+      Age: null,
+      Gender: '',
+      Type: '',
+      Status: '',
+    });
+  };
   // console.log(errors);
 
   return (
@@ -31,16 +52,71 @@ export default function UpdateStaff() {
         <div className="profile">
           <div className="inputAlign">
             <label htmlFor="type">Type</label>
-            <select {...register('staff.Type', {})}>
+            <select
+              onChangeCapture={e => {
+                setSelectedField(e.target.value);
+
+                e.target.value === 'Doctor'
+                  ? setStaff(doctors)
+                  : setStaff(nurses);
+
+                setValue('staff', {
+                  id: null,
+                  Name: null,
+                  Age: null,
+                  Gender: '',
+                  Status: '',
+                });
+              }}
+              {...register('staff.Type', {})}
+            >
               <option value="Doctor">Doctor</option>
               <option value="Nurse">Nurse</option>
             </select>
           </div>
           <div className="inputAlign">
-            <label htmlFor="id">id</label>
-            <select {...register('staff.id', {})}>
-              <option>Doctor</option>
-              <option>Nurse</option>
+            <label htmlFor="id">Staff Name</label>
+            <select
+              onClick={event => {
+                selectedField === 'Doctor'
+                  ? setValue('staff', {
+                      Name: doctors.find(
+                        doctor => doctor.id === parseInt(event.target.value)
+                      ).Name,
+                      Age: doctors.find(
+                        doctor => doctor.id === parseInt(event.target.value)
+                      ).Age,
+                      Gender: doctors.find(
+                        doctor => doctor.id === parseInt(event.target.value)
+                      ).Gender,
+                      Status: doctors.find(
+                        doctor => doctor.id === parseInt(event.target.value)
+                      ).Status,
+                    })
+                  : setValue('staff', {
+                      Name: nurses.find(
+                        nurse => nurse.id === parseInt(event.target.value)
+                      ).Name,
+                      Age: nurses.find(
+                        nurse => nurse.id === parseInt(event.target.value)
+                      ).Age,
+                      Gender: nurses.find(
+                        nurse => nurse.id === parseInt(event.target.value)
+                      ).Gender,
+                      Status: nurses.find(
+                        nurse => nurse.id === parseInt(event.target.value)
+                      ).Status,
+                    });
+              }}
+              {...register('staff.id', {})}
+            >
+              <option value="none" style={{ display: 'none' }}></option>
+
+              {staff.map(staff => (
+                <option key={staff.id} value={staff.id}>
+                  {staff.Name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="inputAlign">
@@ -67,7 +143,7 @@ export default function UpdateStaff() {
               id="gender"
               {...register('staff.Gender', {
                 required: true,
-                disabled: true,
+                // disabled: true,
               })}
             >
               <option value="Male">Male</option>
