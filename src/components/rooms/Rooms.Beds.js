@@ -7,7 +7,6 @@ import { deleteRoomBed } from '../../store/roomSlice';
 import { insertRoomBed } from '../../store/roomSlice';
 
 export default function RoomsBeds({ beds, dispatch, room }) {
-
   return (
     <>
       <div id={`room${room.id}`} className={`roomInfo hide`}>
@@ -15,7 +14,11 @@ export default function RoomsBeds({ beds, dispatch, room }) {
           <div
             className={`beds ${bed.Patient == null ? 'free' : ''}`}
             key={bed.id}
-            onDoubleClick={() => dispatch(deleteRoomBed(bed))}
+            onDoubleClick={() => {
+              if (window.confirm('Are you sure need to delete bed')) {
+                dispatch(deleteRoomBed(bed));
+              }
+            }}
           >
             <p>{bed.Patient == null ? '--' : bed.Patient.Name}</p>
             <BiBed />

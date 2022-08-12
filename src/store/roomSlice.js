@@ -80,13 +80,15 @@ export const deleteRoomBed = createAsyncThunk(
   async (bed, thunkAPI) => {
     const { rejectWithValue } = thunkAPI;
     try {
-      const res = await fetch(bedUrl + bed.id, {
-        method: 'DELETE',
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      });
-      return bed;
+      if (bed.Patient === null) {
+        const res = await fetch(bedUrl + bed.id, {
+          method: 'DELETE',
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        });
+        return bed;
+      }
     } catch (error) {
       return rejectWithValue(error.message);
     }
