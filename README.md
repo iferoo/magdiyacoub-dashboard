@@ -1,5 +1,3 @@
-# ![Dashboard](https://github.com/iferoo/magdiyacoub-dashboard/blob/master/src/imeges/login.png)
-
 # Magdi Yacoub Dashboard
 
 <table>
@@ -10,6 +8,8 @@ information update it, check empty and full beds and manage doctor and nurse shi
 </td>
 </tr>
 </table>
+
+# ![Dashboard](https://github.com/iferoo/magdiyacoub-dashboard/blob/master/src/imeges/login.png)
 
 ## Demo
 
@@ -26,6 +26,8 @@ Here is a working live demo : https://iferoo-magdiyacoub.vercel.app
 ![](https://github.com/iferoo/magdiyacoub-dashboard/blob/master/src/imeges/patients.png)
 
 ### Rooms Page
+
+hint - to delete bed double click selection bed.
 
 ![](https://github.com/iferoo/magdiyacoub-dashboard/blob/master/src/imeges/rooms.png)
 
@@ -78,6 +80,6 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | [Harsh Vijay ](https://github.com/iharsh234)                                                                | [Quandl](https://www.quandl.com)                                                                            | -->
 
-<!-- ## [License](https://github.com/iharsh234/WebApp/blob/master/LICENSE.md) -->
-
-Iferoo © [Eyad Mohamed](https://github.com/iferoo)
+## [License]()
+<!-- https://github.com/iharsh234/WebApp/blob/master/LICENSE.md -->
+All Copyrights reserved by Iferoo © [Eyad Mohamed](https://github.com/iferoo)
