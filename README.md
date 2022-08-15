@@ -1,4 +1,4 @@
-# ![Dashboard](imeges/login.png)
+# ![Dashboard](https://github.com/iferoo/magdiyacoub-dashboard/blob/master/src/imeges/login.png)
 
 # Magdi Yacoub Dashboard
 
@@ -19,19 +19,19 @@ Here is a working live demo : https://iferoo-magdiyacoub.vercel.app
 
 ### Analytics Page
 
-![](imeges/analytics.png)
+![](https://github.com/iferoo/magdiyacoub-dashboard/blob/master/src/imeges/analytics.png)
 
 ### Patients Page
 
-![](imeges/patients.png)
+![](https://github.com/iferoo/magdiyacoub-dashboard/blob/master/src/imeges/patients.png)
 
 ### Rooms Page
 
-![](imeges/rooms.png)
+![](https://github.com/iferoo/magdiyacoub-dashboard/blob/master/src/imeges/rooms.png)
 
 ### Staff Page
 
-![](imeges/staff.png)
+![](https://github.com/iferoo/magdiyacoub-dashboard/blob/master/src/imeges/staff.png)
 
 <!-- ## Mobile support
 
