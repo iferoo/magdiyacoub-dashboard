@@ -59,15 +59,19 @@ To fix a bug or enhance an existing module, follow these steps:
 
 ### Bug / Feature Request
 
-If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://iferoo.vercel.app/) by including your search query and the expected result.
+If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly send me email from my portfolio [here](https://iferoo.vercel.app/) by including your search query and the expected result.
 
-If you'd like to request a new function, feel free to do so by opening an issue [here](https://iferoo.vercel.app/). Please include sample queries and their corresponding results.
+If you'd like to request a new function, feel free to do so by send me email [here](https://iferoo.vercel.app/).
+
+or by
+
+<a href="mailto:emersonpess011108@gmail.com?"><img src="https://img.shields.io/badge/gmail-%23DD0031.svg?&style=for-the-badge&logo=gmail&logoColor=white"/></a>
 
 ## Built with
 
 - [ReactJs](https://reactjs.org/)
-- [Styled Components](https://styled-components.com/) 
-- [Redux Toolkit](https://redux-toolkit.js.org/) 
+- [Styled Components](https://styled-components.com/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
 
 ## To-do
 
@@ -81,5 +85,7 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 | [Harsh Vijay ](https://github.com/iharsh234)                                                                | [Quandl](https://www.quandl.com)                                                                            | -->
 
 ## License
+
 <!-- https://github.com/iharsh234/WebApp/blob/master/LICENSE.md -->
+
 All Copyrights reserved by Iferoo © [Eyad Mohamed](https://github.com/iferoo)
