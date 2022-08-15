@@ -65,9 +65,10 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 
 ## Built with
 
-- [ReactJs](https://reactjs.org/) - a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies and based in single web page.
-- [Styled Components](https://styled-components.com/) - CSS-in-JS is a styling technique by which JavaScript is used to style components, These libraries allow the creation of styled components using tagged template literals.
-- [Redux Toolkit](https://redux-toolkit.js.org/) - Redux is an open-source JavaScript library for managing and centralizing application global state.
+- [ReactJs](https://reactjs.org/)
+- [Styled Components](https://styled-components.com/) 
+- [Redux Toolkit](https://redux-toolkit.js.org/) 
+- [Rea](https://redux-toolkit.js.org/) 
 
 ## To-do
 
