@@ -1,5 +1,5 @@
-import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -48,6 +48,15 @@ const theme = {
 };
 
 function App() {
+  const navigate = useNavigate();
+  // const { token } = useSelector(state => state.auth);
+
+  useEffect(() => {
+    if (localStorage.getItem('token') == null) {
+      navigate('/login');
+    }
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <>

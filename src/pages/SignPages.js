@@ -1,10 +1,12 @@
-import React from "react";
-import {Outlet } from "react-router-dom";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 
 // import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export default function SignPage() {
+  const dispatch = useDispatch();
   // const navigate = useNavigate();
 
   return (
@@ -15,7 +17,7 @@ export default function SignPage() {
 
       <div className="right">
         <img src="/assets/magdi-yacoub-logo.png" alt="Magdi Yaqoub" />
-        <Outlet />
+        <Outlet context={[dispatch]} />
       </div>
     </Section>
   );
@@ -27,7 +29,7 @@ const Section = styled.section`
   .left {
     width: 60%;
     height: inherit;
-    background-image: url("/assets/Surgery2.jpg");
+    background-image: url('/assets/Surgery2.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

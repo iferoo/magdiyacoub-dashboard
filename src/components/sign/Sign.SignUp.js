@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 
-import { Link, useNavigate } from 'react-router-dom';
-
-import styled from 'styled-components';
+import { LoginNotification } from '../../styles/Sign.styled';
+import { signUp } from '../../store/authSlice';
+import { useSelector } from 'react-redux';
 
 export default function SignUp() {
-  const [signupError, setSignupError] = useState(false);
+  const navigate = useNavigate();
+  const [dispatch] = useOutletContext();
+  const [signupError, setSignupError] = useState(true);
+  const { token, error } = useSelector(state => state.auth);
 
-  const {
-    register,
-    handleSubmit,
-    // setValue,
-    // formState: { errors },
-  } = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: {
       user: {
         firstName: '',
@@ -25,7 +24,16 @@ export default function SignUp() {
     },
   });
 
-  const onSubmit = data => {};
+  useEffect(() => {
+    if (localStorage.getItem('token') != null) {
+      navigate('/patients');
+    }
+  }, [token, error]);
+
+  const onSubmit = data => {
+    dispatch(signUp(data.user));
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
@@ -55,9 +63,7 @@ export default function SignUp() {
       />
       <input type="submit" className="submit" value="Sign Up" />
       <div className="links">
-        <LoginNotification
-          style={{ display: `${signupError ? 'block' : 'none'}` }}
-        >
+        <LoginNotification hidden={signupError}>
           This username is already exist.
         </LoginNotification>
         <div className="or">
@@ -70,12 +76,3 @@ export default function SignUp() {
     </form>
   );
 }
-const LoginNotification = styled.div`
-  background-color: var(--red);
-  border-radius: 4px;
-  padding: 0.5rem;
-  color: white;
-  width: 100%;
-  font-size: 1rem;
-  text-align: center;
-`;

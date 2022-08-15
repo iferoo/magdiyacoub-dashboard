@@ -1,20 +1,24 @@
-import { React, useState } from 'react';
+import { React, useEffect, useState } from 'react';
 
 import { useForm } from 'react-hook-form';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate, Link, useOutletContext } from 'react-router-dom';
 
-import styled from 'styled-components';
+import { EmailAlert, LoginNotification } from '../../styles/Sign.styled';
+import { useSelector } from 'react-redux';
+import { logIn } from '../../store/authSlice';
 
 export default function LogIn() {
   const navigate = useNavigate();
-
+  const [dispatch] = useOutletContext();
+  const [loginError, setLoginError] = useState(true);
   const [usernameError, setUsernameError] = useState(false);
+  const { token, error } = useSelector(state => state.auth);
 
-  const hasEmailError = () => {
+  const hasEmailError = username => {
     if (
       !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        getValues('user.username')
+        username
       )
     ) {
       setUsernameError(false);
@@ -23,10 +27,17 @@ export default function LogIn() {
     }
   };
 
+  useEffect(() => {
+    if (localStorage.getItem('token') != null) {
+      navigate('/patients');
+    }
+    setLoginError(error);
+  }, [token, error]);
+
   const {
     register,
     handleSubmit,
-    getValues,
+    // getValues,
     // formState: { errors },
   } = useForm({
     defaultValues: {
@@ -37,7 +48,9 @@ export default function LogIn() {
     },
   });
 
-  const onSubmit = data => {};
+  const onSubmit = data => {
+    dispatch(logIn(data.user));
+  };
   // console.log(errors);
 
   return (
@@ -46,15 +59,13 @@ export default function LogIn() {
         <input
           type="text"
           placeholder="username"
-          onChangeCapture={() => hasEmailError()}
-          onClick={() => hasEmailError()}
+          onChangeCapture={event => hasEmailError(event.target.value)}
+          // onClick={() => hasEmailError()}
           {...register('user.username', {
-            required: true /*pattern: /^\S+@\S+$/i*/,
+            required: true,
           })}
         />
-        <EmailAlert style={{ display: `${usernameError ? 'block' : 'none'}` }}>
-          Enter a valid username
-        </EmailAlert>
+        <EmailAlert hidden={!usernameError}>Enter a valid username</EmailAlert>
       </div>
       <input
         type="password"
@@ -62,17 +73,13 @@ export default function LogIn() {
         {...register('user.password', {})}
       />
 
-      <input
-        type="submit"
-        className="submit"
-        value="login"
-        onClick={() => {
-          navigate('/');
-        }}
-      />
+      <input type="submit" className="submit" value="login" />
 
       <div className="links">
-        <LoginNotification style={{ display: `block` }}>
+        <LoginNotification
+          // style={{ display: `${loginError ? 'block' : 'none'}` }}
+          hidden={loginError}
+        >
           Your username and/or password are incorrect
         </LoginNotification>
         <div className="or">
@@ -86,17 +93,3 @@ export default function LogIn() {
     </form>
   );
 }
-const LoginNotification = styled.div`
-  background-color: var(--red);
-  border-radius: 4px;
-  padding: 0.5rem;
-  color: white;
-  width: 100%;
-  font-size: 1rem;
-  text-align: center;
-`;
-const EmailAlert = styled.p`
-  color: var(--red);
-  margin-top: 5px;
-  font-size: 1rem;
-`;

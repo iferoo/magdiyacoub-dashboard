@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import { ImProfile } from 'react-icons/im';
 import { FaBed } from 'react-icons/fa';
@@ -12,8 +12,6 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { SideBar } from '../styles/Sidebar.Styled';
 
 export default function Sidebar() {
-  const navigate = useNavigate();
-
   const [navbarState, setNavbarState] = useState(false);
 
   const html = document.querySelector('html');
@@ -67,8 +65,8 @@ export default function Sidebar() {
           <Link
             to="/login"
             onClick={() => {
+              // dispatch(removeToken());
               localStorage.removeItem('token');
-              navigate('/login');
             }}
           >
             <BiLogOut />
