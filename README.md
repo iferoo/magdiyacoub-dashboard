@@ -68,7 +68,6 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 - [ReactJs](https://reactjs.org/)
 - [Styled Components](https://styled-components.com/) 
 - [Redux Toolkit](https://redux-toolkit.js.org/) 
-- [Rea](https://redux-toolkit.js.org/) 
 
 ## To-do
 
