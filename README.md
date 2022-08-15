@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# ![Dashboard](imeges/login.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Magdi Yacoub Dashboard
 
-## Available Scripts
+<table>
+<tr>
+<td>
+A CRUD dashboard to control patient, rooms, and employees where multiple users can view patient
+information update it, check empty and full beds and manage doctor and nurse shifts.
+</td>
+</tr>
+</table>
 
-In the project directory, you can run:
+## Demo
 
-### `yarn start`
+Here is a working live demo : https://iferoo-magdiyacoub.vercel.app
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Site
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Analytics Page
 
-### `yarn test`
+![](imeges/analytics.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Patients Page
 
-### `yarn build`
+![](imeges/patients.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Rooms Page
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![](imeges/rooms.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Staff Page
 
-### `yarn eject`
+![](imeges/staff.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!-- ## Mobile support
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The WebApp is compatible with devices of all sizes and all OS's, and consistent improvements are being made.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![](https://iharsh234.github.io/WebApp/images/demo/mobile.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## [Usage](https://iharsh234.github.io/WebApp/) -->
 
-## Learn More
+### Development
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Want to contribute? Great!
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To fix a bug or enhance an existing module, follow these steps:
 
-### Code Splitting
+- Fork the repo
+- Create a new branch (`git checkout -b improve-feature`)
+- Make the appropriate changes in the files
+- Add changes to reflect the changes made
+- Commit your changes (`git commit -am 'Improve feature'`)
+- Push to the branch (`git push origin improve-feature`)
+- Create a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Bug / Feature Request
 
-### Analyzing the Bundle Size
+If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://iferoo.vercel.app/) by including your search query and the expected result.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+If you'd like to request a new function, feel free to do so by opening an issue [here](https://iferoo.vercel.app/). Please include sample queries and their corresponding results.
 
-### Making a Progressive Web App
+## Built with
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- [ReactJs](https://reactjs.org/) - a free and open-source front-end JavaScript library for building user interfaces based on UI components. It is maintained by Meta (formerly Facebook) and a community of individual developers and companies and based in single web page.
+- [Styled Components](https://styled-components.com/) - CSS-in-JS is a styling technique by which JavaScript is used to style components, These libraries allow the creation of styled components using tagged template literals.
+- [Redux Toolkit](https://redux-toolkit.js.org/) - Redux is an open-source JavaScript library for managing and centralizing application global state.
 
-### Advanced Configuration
+## To-do
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Dark Mode.
+- Arabic Language.
 
-### Deployment
+<!-- ## Team
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+| [![Harsh Vijay](https://avatars1.githubusercontent.com/u/12688534?v=3&s=144)](https://github.com/iharsh234) | [![Quandl.com](https://github.com/iharsh234/WebApp/blob/master/images/quandl.jpg)](https://www.quandl.com/) |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| [Harsh Vijay ](https://github.com/iharsh234)                                                                | [Quandl](https://www.quandl.com)                                                                            | -->
 
-### `yarn build` fails to minify
+<!-- ## [License](https://github.com/iharsh234/WebApp/blob/master/LICENSE.md) -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Iferoo © [Eyad Mohamed](https://github.com/iferoo)
