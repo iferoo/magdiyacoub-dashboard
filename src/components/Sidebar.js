@@ -4,19 +4,23 @@ import { NavLink, Link } from 'react-router-dom';
 import { ImProfile } from 'react-icons/im';
 import { FaBed } from 'react-icons/fa';
 import { MdEngineering } from 'react-icons/md';
-import { BsFillChatTextFill } from 'react-icons/bs';
+import {
+  BsFillChatTextFill,
+  BsFillSunFill,
+  BsFillMoonFill,
+} from 'react-icons/bs';
 import { BiLogOut } from 'react-icons/bi';
 import { VscChromeClose } from 'react-icons/vsc';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
 import { SideBar } from '../styles/Sidebar.Styled';
 
-export default function Sidebar() {
+export default function Sidebar({ theme, toggleTheme }) {
   const [navbarState, setNavbarState] = useState(false);
 
   const html = document.querySelector('html');
   html.addEventListener('click', () => setNavbarState(false));
-
+  console.log(theme);
   return (
     <>
       <SideBar>
@@ -60,8 +64,13 @@ export default function Sidebar() {
             </NavLink>
           </div>
         </div>
-
         <div className={`logout ${navbarState ? 'showLogout' : ''}`}>
+          {theme === 'light' ? (
+            <BsFillMoonFill onClick={() => toggleTheme()} />
+          ) : (
+            <BsFillSunFill onClick={() => toggleTheme()} />
+          )}
+
           <Link
             to="/login"
             onClick={() => {

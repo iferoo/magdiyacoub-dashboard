@@ -56,9 +56,9 @@ export const SideBar = styled.section`
         justify-content: flex-start;
         gap: 0.5rem;
         color: ${({ theme }) => theme.fontsColors.secondary};
-        &:hover {
+        /* &:hover {
           color: ${({ theme }) => theme.fontsColors.primary};
-        }
+        } */
       }
 
       .active {
@@ -73,15 +73,10 @@ export const SideBar = styled.section`
   }
 
   .logout {
-    padding: 0.3rem 1rem;
-    border-radius: 1rem;
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.secondary};
-      a {
-        color: ${({ theme }) => theme.colors.primary};
-      }
-    }
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
     a {
       display: flex;
       align-items: center;
@@ -89,6 +84,13 @@ export const SideBar = styled.section`
       text-decoration: none;
       gap: 0.5rem;
       color: ${({ theme }) => theme.colors.secondary};
+
+      padding: 0.3rem 1rem;
+      border-radius: 1rem;
+      &:hover {
+        background-color: ${({ theme }) => theme.colors.secondary};
+        color: ${({ theme }) => theme.colors.primary};
+      }
     }
   }
 

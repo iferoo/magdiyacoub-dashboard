@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
 
 import { ToastContainer } from 'react-toastify';
@@ -31,7 +31,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyles from './styles/Global';
 
-const theme = {
+const lightTheme = {
   colors: {
     primary: '#ffffff',
     secondary: '#f52225',
@@ -47,7 +47,28 @@ const theme = {
   mobile: '768px',
 };
 
+const darkTheme = {
+  colors: {
+    primary: '#000000',
+    secondary: '#f52225',
+    third: '#0197f6',
+    fourth: '#e3c98d',
+    fifth: '#448fa3',
+  },
+  fontsColors: {
+    primary: '#000000',
+    secondary: '#ffffff',
+    third: '#8D8B84',
+  },
+  mobile: '768px',
+};
+
 function App() {
+  const [theme, setTheme] = useState('light');
+  const toggleTheme = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light');
+  };
+
   const navigate = useNavigate();
   // const { token } = useSelector(state => state.auth);
 
@@ -58,11 +79,14 @@ function App() {
   }, []);
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <>
         <GlobalStyles />
         <Routes>
-          <Route path="/" element={<AppPages />}>
+          <Route
+            path="/"
+            element={<AppPages theme={theme} toggleTheme={toggleTheme} />}
+          >
             <Route index element={<Navigate to="/analytics" replace />} />
             <Route path="patients" element={<PatientsPage />}>
               <Route index element={<Navigate to="view" replace />} />
