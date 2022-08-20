@@ -28,6 +28,7 @@ export const SideBar = styled.section`
         padding: 0.2rem 1rem;
         border-radius: 1rem;
         background-color: #fff;
+        background-color: ${({ theme }) => theme.colors.primary};
 
         span img {
           width: 100px;
@@ -55,6 +56,7 @@ export const SideBar = styled.section`
         align-items: center;
         justify-content: flex-start;
         gap: 0.5rem;
+        background-color: ${({ theme }) => theme.colors.primary};
         color: ${({ theme }) => theme.fontsColors.secondary};
         /* &:hover {
           color: ${({ theme }) => theme.fontsColors.primary};

@@ -29,7 +29,7 @@ export default function LogIn() {
 
   useEffect(() => {
     if (localStorage.getItem('token') != null) {
-      navigate('/patients');
+      navigate('/');
     }
     setLoginError(error);
   }, [token, error]);

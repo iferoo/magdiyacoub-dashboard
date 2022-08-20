@@ -4,7 +4,6 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 * {
   box-sizing: border-box;
-
 }
 
 body {
@@ -14,8 +13,12 @@ body {
     sans-serif;
     background-color: ${({ theme }) => theme.colors.parimary};
   color:${({ theme }) => theme.fontsColors.secondary};
+  
 }
 
+/* p, h1, h2, h3, svg, div, section, a{
+  transition: all 0.5s linear;
+}  */
 `;
 
 export const PageSection = styled.section`
