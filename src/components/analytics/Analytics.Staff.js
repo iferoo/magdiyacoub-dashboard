@@ -13,7 +13,7 @@ import {
 
 export default function AnalyticsStaff({ data }) {
   return (
-    <div className="char">
+    <div className="char" data-aos="fade-up">
       <div className="charTitle">
         <h1>Staff</h1>
       </div>

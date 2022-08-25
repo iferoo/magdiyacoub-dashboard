@@ -56,7 +56,7 @@ const data = [
 
 export default function AnalyticsPatients() {
   return (
-    <div className="char">
+    <div className="char" data-aos="fade-up">
       <div className="charTitle">
         <h1>Patients</h1>
       </div>

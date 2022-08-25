@@ -158,7 +158,7 @@ export default function ViewPatient() {
         <div className="result">{patientsList(patients)}</div>
       </div>
 
-      <div className="right">
+      <div className="right" data-aos="fade-right">
         <PatientForm
           value="update"
           onSubmit={onSubmit}

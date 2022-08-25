@@ -45,7 +45,7 @@ export default function Sidebar({ theme, toggleTheme }) {
             </div>
           </div>
 
-          <div className={`links ${navbarState ? 'showLinks' : ''}`}>
+          <div className={`links ${navbarState ? 'showLinks' : ''}`} data-aos="fade-right">
             <NavLink to="/analytics">
               <BsFillChatTextFill />
               <span> Analytics</span>

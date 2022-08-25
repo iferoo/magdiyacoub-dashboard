@@ -34,7 +34,7 @@ const renderCustomizedLabel = ({
 
 export default function AnalyticsBeds({data}) {
   return (
-    <div className="char">
+    <div className="char" data-aos="fade-up">
       <div className="charTitle">
         <h1>Beds</h1>
       </div>

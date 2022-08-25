@@ -19,7 +19,7 @@ export default function ViewStaff() {
   };
 
   return (
-    <StaffSection>
+    <StaffSection data-aos="fade-up">
       <div>
         <div className="staffType">
           <h3>Doctors</h3>
